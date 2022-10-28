@@ -1,14 +1,19 @@
 import React from 'react';
 import classnames from "classnames";
 import styles from "./styles.module.css"
+import Counter from "../Counter/Counter";
 
 function Book(props) {
     return (
         <article className={classnames(styles.card)}>
-            <p>{props.children}</p>
-            <p>{props.children}</p>
-            <p>{props.children}</p>
-            <p>{props.children}</p>
+            <text className={styles.text}>
+                <p>{props.children}</p>
+                <p>{props.children}</p>
+                <p>{props.children}</p>
+                <p>{props.children}</p>
+            </text>
+            <Counter/>
+
         </article>
     );
 }
