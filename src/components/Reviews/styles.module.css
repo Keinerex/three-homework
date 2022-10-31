@@ -1,0 +1,16 @@
+.reviews{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-height: 100%;
+    overflow-y: auto;
+    flex-grow: 4;
+    grid-area: c;
+}
+.ul{
+    padding-inline-start: 0;
+}
+
+.reviews::-webkit-scrollbar {
+    width: 0;
+}

@@ -3,6 +3,20 @@
     flex-direction: column;
     padding: 20px;
     background: gray;
-    flex-grow: 1;
+    flex-grow: 0;
     gap: 24px;
+    border-radius: 8px;
+}
+
+.select_link{
+    color: black;
+    font-weight: 400;
+    text-decoration: none;
+    min-width: 280px;
+
+
+}
+
+.active{
+    font-weight: 700;
 }

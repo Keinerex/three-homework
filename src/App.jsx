@@ -1,18 +1,22 @@
-import './App.module.css';
-import Header from "./components/Header/Header";
+import './pages/MarketPage/styles.module.css';
+import MarketPage from "./pages/MarketPage/MarketPage";
 import classnames from "classnames";
-import styles from "./App.module.css"
-import Books from "./components/Books/Books";
-import Navigation from "./components/Navigation/Navigation";
+import styles from "./app.module.css";
+import {catalog} from "./constants/mock";
+import BookPage from "./pages/BookPage/BookPage";
+
 
 function App() {
-    return (<div className={classnames(styles.app)}>
-        <Header/>
-        <main className={classnames(styles.main)}>
-            <Navigation/>
-            <Books/>
-        </main>
-    </div>);
+    return (
+        <div className={classnames(styles.app)}>
+            <BookPage book={catalog[0].books[0]}></BookPage>
+
+            {/*
+            <MarketPage catalog={catalog}></MarketPage>
+            */}
+        </div>
+
+    );
 }
 
 export default App;

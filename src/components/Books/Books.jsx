@@ -3,10 +3,10 @@ import Book from "../Book/Book";
 import classnames from "classnames";
 import styles from "./styles.module.css"
 
-function Books(props) {
+function Books({group}) {
     return (
         <section className={classnames(styles.books)}>
-            {[1, 2, 3, 4, 5].map((book) => <Book>Lorem Ipsum</Book>)}
+            {group.books.map((book) => <Book name={book.name} authors={book.authors} genre={book.genre} price={book.price} key={book.id} target={"market"}/>)}
         </section>
     );
 }

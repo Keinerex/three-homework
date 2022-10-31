@@ -1,0 +1,12 @@
+.card{
+    background: #FFFFFF;
+    padding: 0 20px;
+    border-radius: 8px;
+    grid-area: b;
+    overflow-y: auto;
+}
+
+.card::-webkit-scrollbar{
+    width: 0;
+}
+
