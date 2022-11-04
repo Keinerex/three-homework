@@ -1,15 +1,15 @@
-import React from 'react';
-import IconCart from "../IconCart/IconCart";
+import React from "react";
 import classnames from "classnames";
-import styles from './styles.module.css';
+import styles from "./styles.module.css";
+import icon from "./icon.svg";
 
-function Header(props) {
-    return (
-        <header className={classnames(styles.header)}>
-            <h1 className={classnames(styles.text)}>Магазин</h1>
-            <IconCart/>
-        </header>
-    );
+function Header() {
+  return (
+    <header className={classnames(styles.header)}>
+      <h1 className={classnames(styles.text)}>Магазин</h1>
+      <img src={icon} alt="cart-icon" />
+    </header>
+  );
 }
 
 export default Header;

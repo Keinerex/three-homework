@@ -1,22 +1,21 @@
-.navigation{
+.navigation {
     display: flex;
     flex-direction: column;
     padding: 20px;
-    background: gray;
+    background: #FFFFFF;
     flex-grow: 0;
     gap: 24px;
     border-radius: 8px;
 }
 
-.select_link{
+.select_link {
+    cursor: pointer;
     color: black;
     font-weight: 400;
     text-decoration: none;
     min-width: 280px;
-
-
 }
 
-.active{
+.active {
     font-weight: 700;
 }
