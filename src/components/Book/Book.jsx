@@ -2,19 +2,30 @@ import React from "react";
 import classnames from "classnames";
 import styles from "./styles.module.css";
 import Counter from "../Counter/Counter";
+import {useSelector} from "react-redux";
+import {selectBookById} from "../../store/book/selectors";
+import {Link} from "react-router-dom";
 
-function Book({ name, authors, genre, price, target }) {
-  return (
-    <article className={classnames(styles.card)}>
+function Book({bookId, target}) {
+
+
+    const book = useSelector((state) => selectBookById(state, bookId));
+
+    if (!book) {
+        return <p>Loading</p>
+    }
+
+    return (
+        <article className={classnames(target === "market" && styles.market_target, styles.card)}>
       <span className={styles.text}>
-        <h2>{name}</h2>
-        <p>{authors.join(", ")}</p>
-        <p>{genre}</p>
-        <p>{price}</p>
+        <Link to={`/book/${book.id}`} className={classnames(styles.title)}>{book.title}</Link>
+        <p>{book.authors.join(", ")}</p>
+        <p>{book.genre}</p>
+        <p>{book.price}</p>
       </span>
-      <Counter target={target} />
-    </article>
-  );
+            <Counter target={target} bookId={bookId}/>
+        </article>
+    );
 }
 
 export default Book;

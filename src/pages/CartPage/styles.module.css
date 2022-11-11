@@ -1,0 +1,6 @@
+.main {
+    grid-template-areas: "bill books"
+                         "bill books"
+                         "none books";
+
+}
