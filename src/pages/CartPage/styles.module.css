@@ -1,6 +1,14 @@
 .main {
-    grid-template-areas: "bill books"
-                         "bill books"
-                         "none books";
-
+    display: grid;
+    height: 90%;
+    width: 100%;
+    box-sizing: border-box;
+    grid-template-areas: "bill books books"
+                         "bill books books"
+                         "none books books";
+    grid-auto-columns: 1fr;
+    grid-auto-rows: 1fr;
+    background: #E9E9E9;
+    gap: 20px;
+    padding: 40px;
 }

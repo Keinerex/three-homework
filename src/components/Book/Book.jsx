@@ -23,7 +23,7 @@ function Book({bookId, target}) {
         <p>{book.genre}</p>
         <p>{book.price}</p>
       </span>
-            <Counter target={target} bookId={bookId}/>
+            <Counter target={target} bookId={bookId} price={book.price}/>
         </article>
     );
 }

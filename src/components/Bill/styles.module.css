@@ -2,3 +2,31 @@
     background: #FFFFFF;
     grid-area: bill;
 }
+
+.result{
+    height: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.list{
+    box-sizing: border-box;
+    padding: 0 20px 20px;
+    height: calc(90% - 40px);
+    overflow-y: auto;
+
+}
+
+.buy{
+    background: #000000;
+    border-radius: 8px;
+    width: 80px;
+    height: 35px;
+    color: #FFFFFF;
+}
+
+.list::-webkit-scrollbar {
+    width: 0;
+}

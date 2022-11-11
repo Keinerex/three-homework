@@ -1,11 +1,11 @@
-import React, {useState} from "react";
+import React from "react";
 import classnames from "classnames";
 import styles from "./styles.module.css";
 import {useDispatch, useSelector} from "react-redux";
 import {selectBookCount} from "../../store/cart/selectors";
 import {cartSlice} from "../../store/cart";
 
-function Counter({target, bookId}) {
+function Counter({target, bookId, price}) {
     const dispatch = useDispatch();
     const count = useSelector((state) => selectBookCount(state, bookId));
 
@@ -17,7 +17,10 @@ function Counter({target, bookId}) {
             )}
         >
             <button
-                onClick={() => dispatch(cartSlice.actions.removeBook(bookId))}
+                onClick={() => {
+                    dispatch(cartSlice.actions.removeBook(bookId));
+                    dispatch(cartSlice.actions.removePrice(price));
+                }}
                 className={styles.btn}
                 disabled={(count || 0) === 0}
             >
@@ -25,7 +28,10 @@ function Counter({target, bookId}) {
             </button>
             <p className={styles.counter_text}>{count || 0}</p>
             <button
-                onClick={() => dispatch(cartSlice.actions.addBook(bookId))}
+                onClick={() => {
+                    dispatch(cartSlice.actions.addBook(bookId))
+                    dispatch(cartSlice.actions.addPrice(price))
+                }}
                 className={styles.btn}>
 
                 +
