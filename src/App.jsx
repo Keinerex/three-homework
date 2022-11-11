@@ -1,25 +1,37 @@
-import "./pages/MarketPage/styles.module.css";
-// eslint-disable-next-line
-import MarketPage from "./pages/MarketPage/MarketPage";
 import classnames from "classnames";
 import styles from "./app.module.css";
-import { catalog } from "./constants/mock";
 // eslint-disable-next-line
 import BookPage from "./pages/BookPage/BookPage";
+// eslint-disable-next-line
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import MarketPage from "./pages/MarketPage/MarketPage";
 import Header from "./components/Header/Header";
 import React from "react";
+import {store} from "./store";
+import {Provider} from "react-redux";
+import Books from "./components/Books/Books";
+import CartPage from "./pages/CartPage/CartPage";
 
 function App() {
-  return (
-    <div className={classnames(styles.app)}>
-      <Header />
+    return (
+        <Provider store={store}>
+            <BrowserRouter>
+                <div className={classnames(styles.app)}>
+                    <Header/>
+                    <Routes>
+                        <Route path="/" element={<MarketPage/>} >
+                            <Route path=":categoryId" element={<Books target={"market"}/>}></Route>
+                        </Route>
+                        <Route path="/book" >
+                            <Route path=":bookId" element={<BookPage />}></Route>
+                        </Route>
+                        <Route path="/cart" element={<CartPage/>}/>
+                    </Routes>
 
-      <BookPage book={catalog[0].books[0]}></BookPage>
-      {/*
-            <MarketPage catalog={catalog}></MarketPage>
-            */}
-    </div>
-  );
+                </div>
+        </BrowserRouter>
+        </Provider>
+    );
 }
 
 export default App;

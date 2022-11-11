@@ -12,3 +12,15 @@
 .text{
     display: block;
 }
+
+.title{
+    display: block;
+    font-size: 1.17em;
+    font-weight: bold;
+    text-decoration: none;
+    color: #000000;
+}
+
+.market_target{
+    padding-top: 20px;
+}

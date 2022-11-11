@@ -1,0 +1,17 @@
+.listItem::marker{
+    content: none;
+}
+
+.listItem{
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 0 16px;
+
+}
+
+.line{
+    margin: 0;
+}

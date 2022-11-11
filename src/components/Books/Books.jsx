@@ -1,22 +1,47 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Book from "../Book/Book";
 import classnames from "classnames";
 import styles from "./styles.module.css"
+import {useDispatch, useSelector} from "react-redux";
+import {loadBooksByCategoryIfNotExists} from "../../store/book/loadBooksIfNotExists";
+import {selectCategoryBookIds, selectCategoryIds} from "../../store/category/selectors";
+import {selectIsBooksLoading} from "../../store/book/selectors";
+import {useParams} from "react-router-dom";
 
-function Books({group}) {
+function Books( {target}) {
+
+    const dispatch = useDispatch();
+    const {categoryId} = useParams();
+    const firstId = useSelector((state) => selectCategoryIds(state))[0]
+
+    useEffect(() => {
+        dispatch(loadBooksByCategoryIfNotExists(categoryId ? categoryId : firstId))
+
+    }, [categoryId, firstId])
+
+
+    const bookIds = useSelector((state) => selectCategoryBookIds(state, categoryId))
+
+    const isLoading = useSelector((state) => selectIsBooksLoading(state));
+
+    if (isLoading) {
+        return <span>Loading</span>
+    }
+    if (!bookIds) {
+        return null;
+    }
+
+
     return (
-      <section className={classnames(styles.books)}>
-        {group.books.map((book) => (
-          <Book
-            name={book.name}
-            authors={book.authors}
-            genre={book.genre}
-            price={book.price}
-            key={book.id}
-            target={"market"}
-          />
-        ))}
-      </section>
+        <section className={classnames(styles.books)}>
+            {bookIds.map((bookId) => (
+                <Book
+                    bookId={bookId.at(0)}
+                    target={target}
+                    key={bookId}
+                />
+            ))}
+        </section>
     );
 }
 

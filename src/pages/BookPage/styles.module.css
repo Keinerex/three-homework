@@ -1,9 +1,9 @@
 .main{
     box-sizing: border-box;
     height: 90%;
+    width: 100%;
     background: #E9E9E9;
     padding: 40px;
-    width: 100%;
     gap: 20px;
     display: grid;
     grid-template-areas: "a b"
