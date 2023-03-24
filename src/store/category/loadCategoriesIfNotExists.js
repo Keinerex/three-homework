@@ -7,7 +7,7 @@ export const LoadCategoriesIfNotExists = (dispatch, getState) => {
             console.log("get categories from store")
             return;
         }
-    fetch('https://fastapi-starter.keinerex.repl.co/api/categories')
+    fetch('/api/categories')
         .then(response => response.json())
         .then(categories => {
             dispatch(categorySlice.actions.successLoading(prepareData(categories)))

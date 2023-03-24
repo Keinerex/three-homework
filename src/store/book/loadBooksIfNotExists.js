@@ -24,7 +24,7 @@ export const loadBooksByCategoryIfNotExists = (categoryId) => (dispatch, getStat
 
     dispatch(bookSlice.actions.startLoading());
     console.log("get books from server")
-    fetch(`https://fastapi-starter.keinerex.repl.co/api/books/?category_id=${categoryId}`)
+    fetch(`/api/books/?category_id=${categoryId}`)
         .then((response) => response.json())
         .then((books) => {
             dispatch(bookSlice.actions.successLoading(prepareData(books)));
@@ -41,7 +41,7 @@ export const loadBookIfNotExists = (bookId) => (dispatch, getState) => {
         return
     }
 
-    fetch(`https://fastapi-starter.keinerex.repl.co/api/book/?book_id=${bookId}`)
+    fetch(`/api/book/?book_id=${bookId}`)
         .then((response) => response.json())
         .then((books) => {
             console.log("get book from server")

@@ -5,6 +5,7 @@ import Counter from "../Counter/Counter";
 import {useSelector} from "react-redux";
 import {selectBookById} from "../../store/book/selectors";
 import {Link} from "react-router-dom";
+import {RingLoader} from "react-spinners";
 
 function Book({bookId, target}) {
 

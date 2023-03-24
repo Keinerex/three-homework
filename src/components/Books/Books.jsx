@@ -7,8 +7,9 @@ import {loadBooksByCategoryIfNotExists} from "../../store/book/loadBooksIfNotExi
 import {selectCategoryBookIds, selectCategoryIds} from "../../store/category/selectors";
 import {selectIsBooksLoading} from "../../store/book/selectors";
 import {useParams} from "react-router-dom";
+import {RingLoader} from "react-spinners";
 
-function Books( {target}) {
+function Books({target}) {
 
     const dispatch = useDispatch();
     const {categoryId} = useParams();
@@ -25,7 +26,16 @@ function Books( {target}) {
     const isLoading = useSelector((state) => selectIsBooksLoading(state));
 
     if (isLoading) {
-        return <span>Loading</span>
+        return <RingLoader
+            color="#000000"
+            size={180}
+            speedMultiplier={0.5}
+            cssOverride={
+                {
+                    margin: "auto"
+                }
+            }
+        />
     }
     if (!bookIds) {
         return null;
@@ -36,7 +46,7 @@ function Books( {target}) {
         <section className={classnames(styles.books)}>
             {bookIds.map((bookId) => (
                 <Book
-                    bookId={bookId.at(0)}
+                    bookId={bookId}
                     target={target}
                     key={bookId}
                 />
