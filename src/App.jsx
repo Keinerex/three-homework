@@ -20,32 +20,33 @@ import {LocalizationProvider} from "@mui/x-date-pickers";
 import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
 
 
+
 function App() {
     return (
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <Provider store={store}>
-                <BrowserRouter>
-                    <div className={classnames(styles.app)}>
-                        <Header/>
-                        <Routes>
-                            <Route path="/" element={<MarketPage/>}>
-                                <Route path=":categoryId" element={<Books target={"market"}/>}></Route>
-                            </Route>
-                            <Route path="/book">
-                                <Route path=":bookId" element={<BookPage/>}></Route>
-                            </Route>
-                            <Route path="/cart" element={<CartPage/>}/>
-                            <Route path="/profile" element={<ProfilePage/>}>
-                                <Route path="personal" element={<PersonalData/>}/>
-                                <Route path="orders" element={<Orders/>}/>
-                                <Route path="bonus" element={<Bonuses/>}/>
-                                <Route path="favourite" element={<Favourite></Favourite>}/>
-                            </Route>
-                        </Routes>
-                    </div>
-                </BrowserRouter>
-            </Provider>
-        </LocalizationProvider>
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <Provider store={store}>
+                    <BrowserRouter>
+                        <div className={classnames(styles.app)}>
+                            <Header/>
+                            <Routes>
+                                <Route path="/" element={<MarketPage/>}>
+                                    <Route path=":categoryId" element={<Books target={"market"}/>}></Route>
+                                </Route>
+                                <Route path="/book">
+                                    <Route path=":bookId" element={<BookPage/>}></Route>
+                                </Route>
+                                <Route path="/cart" element={<CartPage/>}/>
+                                <Route path="/profile" element={<ProfilePage/>}>
+                                    <Route path="personal" element={<PersonalData/>}/>
+                                    <Route path="orders" element={<Orders/>}/>
+                                    <Route path="bonus" element={<Bonuses/>}/>
+                                    <Route path="favourite" element={<Favourite></Favourite>}/>
+                                </Route>
+                            </Routes>
+                        </div>
+                    </BrowserRouter>
+                </Provider>
+            </LocalizationProvider>
     );
 }
 
