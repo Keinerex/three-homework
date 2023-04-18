@@ -1,16 +1,16 @@
-import React from "react";
+import React from 'react';
 import classnames from "classnames";
 import styles from "./styles.module.css";
-import Navigation from "../../components/Navigation/Navigation";
 import {Outlet} from "react-router-dom";
+import Menu from "../../components/Menu/Menu";
 
-function MarketPage() {
+function ProfilePage() {
     return (
         <main className={classnames(styles.main)}>
-            <Navigation/>
+            <Menu/>
             <Outlet/>
         </main>
     );
 }
 
-export default MarketPage;
+export default ProfilePage;

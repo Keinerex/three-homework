@@ -1,0 +1,15 @@
+.wrap{
+    background: #ffffff;
+    border-radius: 8px;
+    width: 80%;
+    padding: 30px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    grid-template-rows: repeat(4, 1fr);
+
+}
+
+.submit{
+    background-color: #000000;
+}
