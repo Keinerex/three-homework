@@ -1,13 +1,41 @@
-import React from 'react';
+import React, {useState} from 'react';
 import classnames from "classnames";
 import styles from "./styles.module.css";
 import {Button, FormControl, InputLabel, OutlinedInput} from '@mui/material';
 import {DatePicker} from "@mui/x-date-pickers";
+import praxios from "../../axios/user_protected.jsx"
+import dayjs from "dayjs";
+
+
+
 
 
 function PersonalData() {
+    const [date, setDate] = useState(dayjs('2001-01-01'))
     return (
-        <form className={classnames(styles.wrap)}>
+        <form
+            name="personal_data_form"
+            className={classnames(styles.wrap)}
+            onSubmit={(event) => {
+                event.preventDefault()
+                const form = document.forms["personal_data_form"]
+                praxios.put("/api/personal/data", {
+                    headers: {
+                        "Accept": "application/json",
+                        "Content-Type:": "application/json"
+                    },
+                    body: JSON.stringify({
+                        name: form.name.value,
+                        surname: form.surname.value,
+                        patronymic: form.patronymic.value,
+                        date: date.format("DD-MM-YYYY"),
+                        email: form.email.value,
+                        tel: form.tel.value,
+                    })
+
+                })
+
+            }}>
             <FormControl>
                 <InputLabel required={true} htmlFor="surname">Фамилия</InputLabel>
                 <OutlinedInput required={true} label="Фамилия" id="surname" name="surname"/>
@@ -21,10 +49,12 @@ function PersonalData() {
                 <OutlinedInput label="Отчество" id="patronymic" name="patronymic"/>
             </FormControl>
             <FormControl>
-                <DatePicker label="Дата рождения *" id="date" name="date" required={true}/>
-            </FormControl>
-            <FormControl>
-                <InputLabel required={true} htmlFor="email">E-mail</InputLabel>
+                <DatePicker label="Дата рождения *" format="DD/MM/YYYY" id="date" name="date" required={true} onChange={(value) => {
+                    setDate(value)
+                }}/>
+                    </FormControl>
+                    <FormControl>
+                    <InputLabel required={true} htmlFor="email">E-mail</InputLabel>
                 <OutlinedInput required={true} name="email" label="E-mail" id="email"/>
             </FormControl>
             <FormControl>
