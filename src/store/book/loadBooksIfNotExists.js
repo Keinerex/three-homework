@@ -2,6 +2,7 @@ import {selectCategories, selectCategoryBookIds} from "../category/selectors";
 import {prepareData} from "../util";
 import {bookSlice} from "./index";
 import {selectBooksIds} from "./selectors";
+import axios from "axios";
 
 Array.prototype.hasAll = function (a) {
     var hash = this.reduce(function (acc, i) {
@@ -24,8 +25,8 @@ export const loadBooksByCategoryIfNotExists = (categoryId) => (dispatch, getStat
 
     dispatch(bookSlice.actions.startLoading());
     console.log("get books from server")
-    fetch(`/api/books/?category_id=${categoryId}`)
-        .then((response) => response.json())
+    axios.get(`/api/books/?category_id=${categoryId}`)
+        .then((response) => response.data)
         .then((books) => {
             dispatch(bookSlice.actions.successLoading(prepareData(books)));
         })
@@ -41,8 +42,8 @@ export const loadBookIfNotExists = (bookId) => (dispatch, getState) => {
         return
     }
 
-    fetch(`/api/book/?book_id=${bookId}`)
-        .then((response) => response.json())
+    axios.get(`/api/book/?book_id=${bookId}`)
+        .then((response) => response.data)
         .then((books) => {
             console.log("get book from server")
             dispatch(bookSlice.actions.successLoading(prepareData([books])));

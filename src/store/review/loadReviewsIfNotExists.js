@@ -2,6 +2,7 @@ import {prepareData} from "../util";
 import {reviewSlice} from "./index";
 import {selectBookReviewIds, selectReviewIds, selectReviews} from "./selectors";
 import {selectBookById} from "../book/selectors";
+import axios from "axios";
 
 Array.prototype.hasAll = function (a) {
     var hash = this.reduce(function (acc, i) {
@@ -24,10 +25,8 @@ export const loadReviewsIfNotExists = (bookId) => (dispatch, getState) => {
 
     dispatch(reviewSlice.actions.startLoading());
     console.log("get reviews from server")
-    fetch(`/api/reviews/?book_id=${bookId}`)
-        .then((response) => {
-            return response.json()
-        })
+    axios.get(`/api/reviews/?book_id=${bookId}`)
+        .then((response) => response.data)
         .then((reviews) => {
             dispatch(reviewSlice.actions.successLoading(prepareData(reviews)));
         })
