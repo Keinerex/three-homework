@@ -4,7 +4,7 @@ import classnames from "classnames";
 import styles from "./styles.module.css"
 import {useSelector} from "react-redux";
 
-import {selectCartIds} from "../../store/cart/selectors";
+import {selectCartIds} from "../../store/user/selectors";
 
 function BooksCart() {
 

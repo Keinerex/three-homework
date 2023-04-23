@@ -23,6 +23,7 @@ import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
 
 function App() {
     return (
+
             <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <Provider store={store}>
                     <BrowserRouter>

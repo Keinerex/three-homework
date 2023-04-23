@@ -7,3 +7,7 @@ export const prepareData = (items) => {
         ids: items.map(({ id }) => id),
     };
 };
+
+export const prepareUserData = (items) => {
+    return items
+}

@@ -2,7 +2,7 @@ import React from 'react';
 import styles from "./styles.module.css"
 import classnames from "classnames";
 import {useSelector} from "react-redux";
-import {selectCartIds, selectPrice} from "../../store/cart/selectors";
+import {selectCartIds, selectPrice} from "../../store/user/selectors";
 import BillRow from "../BillRow/BillRow";
 
 function Bill() {

@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import classnames from "classnames";
+import axios from "axios";
 import styles from "./styles.module.css";
-import {Button, FormControl, InputLabel, OutlinedInput} from '@mui/material';
+import {FormControl, InputLabel, OutlinedInput} from '@mui/material';
 import {DatePicker} from "@mui/x-date-pickers";
-import praxios from "../../axios/user_protected.jsx"
 import dayjs from "dayjs";
 
 
@@ -19,7 +19,7 @@ function PersonalData() {
             onSubmit={(event) => {
                 event.preventDefault()
                 const form = document.forms["personal_data_form"]
-                praxios.put("/api/personal/data", {
+                axios.put("/api/update_userdata", {
                     headers: {
                         "Accept": "application/json",
                         "Content-Type:": "application/json"

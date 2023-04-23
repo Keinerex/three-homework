@@ -2,7 +2,7 @@ import React from 'react';
 import classnames from "classnames";
 import styles from "./styles.module.css"
 import {selectBookById} from "../../store/book/selectors";
-import {selectBookCount} from "../../store/cart/selectors";
+import {selectBookCount} from "../../store/user/selectors";
 import {useSelector} from "react-redux";
 
 function BillRow({bookId}) {

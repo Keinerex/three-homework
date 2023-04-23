@@ -6,7 +6,6 @@ import profileIcon from "./profile-icon.svg"
 import {Link} from "react-router-dom";
 
 function Header() {
-
     return (
         <header className={classnames(styles.header)}>
             <Link to={"/"} className={classnames(styles.text)}>Магазин</Link>

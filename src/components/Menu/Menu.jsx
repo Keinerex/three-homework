@@ -2,6 +2,7 @@ import React from 'react';
 import classnames from "classnames";
 import styles from "./styles.module.css";
 import {NavLink} from "react-router-dom";
+import axios from "axios";
 
 function Menu() {
     return (
@@ -14,15 +15,6 @@ function Menu() {
                     styles.select_link
                 )}>
                 Личные данные
-            </NavLink>
-            <NavLink
-                to="/profile/orders"
-                key="orders"
-                className={({isActive}) => classnames(
-                    {[styles.active]: isActive},
-                    styles.select_link
-                )}>
-                Заказы
             </NavLink>
             <NavLink
                 to="/profile/bonus"
@@ -42,12 +34,15 @@ function Menu() {
                 )}>
                 Отложенное
             </NavLink>
-            <NavLink
-                to="/profile/logout"
-                key="logout"
+            <a
+                onClick={(event) => {
+                    event.preventDefault();
+                    axios.post("/api/logout")
+                        .catch(() => {console.log("logout error")})
+                }}
                 className={classnames(styles.logout, styles.select_link)}>
                 Выйти
-            </NavLink>
+            </a>
         </nav>
     );
 }
