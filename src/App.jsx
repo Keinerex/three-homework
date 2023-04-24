@@ -18,6 +18,7 @@ import Favourite from "./components/Favourite/Favourite";
 import Orders from "./components/Orders/Orders";
 import {LocalizationProvider} from "@mui/x-date-pickers";
 import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
+import Register from "./components/Register/Register";
 
 
 
@@ -43,6 +44,7 @@ function App() {
                                     <Route path="bonus" element={<Bonuses/>}/>
                                     <Route path="favourite" element={<Favourite></Favourite>}/>
                                 </Route>
+                                <Route path="/register" element={<Register/>}/>
                             </Routes>
                         </div>
                     </BrowserRouter>

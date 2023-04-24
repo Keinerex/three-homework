@@ -1,26 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {Statuses} from "../../constants/statuses";
+import {initialCartState} from "../../constants/states";
 
 export const userSlice = createSlice({
     name: "user",
-    initialState: {
-        status: Statuses.idle,
-        cart: {
-            price: 0,
-            books: {
-            }
-        },
-        favourite: {
-            ids: []
-        },
-        username: null,
-        name: null,
-        surname: null,
-        patronymic: null,
-        email: null,
-        tel: null,
-        date: null,
-    },
+    initialState: initialCartState,
     reducers: {
         startLoading: (state, action) => {
             state.status = Statuses.inProgress;
@@ -28,6 +12,13 @@ export const userSlice = createSlice({
         successLoading: (state, action) => {
             state.status = Statuses.success;
             state.username = action.payload.username;
+            state.name = action.payload.name;
+            state.surname = action.payload.surname;
+            state.patronymic = action.payload.patronymic;
+            state.email = action.payload.email;
+            state.tel = action.payload.tel;
+            state.date = action.payload.date;
+            state.cart = action.payload.cart;
         },
         failLoading: (state, action) => {
             state.status = Statuses.failed;
@@ -44,6 +35,18 @@ export const userSlice = createSlice({
         },
         removePrice: (state, action) => {
             state.cart.price -= action.payload
+        },
+        logout: (state, action) => {
+            console.log("logout")
+            state.status = initialCartState.status;
+            state.favourite = initialCartState.favourite;
+            state.username = initialCartState.username;
+            state.name = initialCartState.name;
+            state.surname = initialCartState.surname;
+            state.patronymic = initialCartState.patronymic;
+            state.email = initialCartState.email;
+            state.tel = initialCartState.tel;
+            state.date = initialCartState.date;
         }
     },
 });

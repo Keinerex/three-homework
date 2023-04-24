@@ -4,6 +4,7 @@ import styles from "./styles.module.css";
 import {useDispatch, useSelector} from "react-redux";
 import {selectBookCount} from "../../store/user/selectors";
 import {userSlice} from "../../store/user";
+import {sendUserData} from "../../store/user/sendUserData";
 
 function Counter({target, bookId, price}) {
     const dispatch = useDispatch();
@@ -20,6 +21,7 @@ function Counter({target, bookId, price}) {
                 onClick={() => {
                     dispatch(userSlice.actions.removeBook(bookId));
                     dispatch(userSlice.actions.removePrice(price));
+                    dispatch(sendUserData());
                 }}
                 className={styles.btn}
                 disabled={(count || 0) === 0}
@@ -31,6 +33,7 @@ function Counter({target, bookId, price}) {
                 onClick={() => {
                     dispatch(userSlice.actions.addBook(bookId))
                     dispatch(userSlice.actions.addPrice(price))
+                    dispatch(sendUserData());
                 }}
                 className={styles.btn}>
 

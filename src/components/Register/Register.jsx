@@ -1,11 +1,10 @@
 import React, {useState} from 'react';
 import {Alert, FormControl, InputLabel, OutlinedInput, Snackbar} from '@mui/material';
-import {NavLink} from "react-router-dom";
 import axios from "axios";
 import classnames from "classnames";
 import styles from "./styles.module.css";
 
-function Auth({setRefresh, refresh}) {
+function Register() {
 
     const [open, setOpen] = useState(false)
     const [data, setData] = useState({
@@ -16,35 +15,34 @@ function Auth({setRefresh, refresh}) {
     return (
         <main className={classnames(styles.main)}>
             <form className={classnames(styles.form)}
-                  name="auth_form"
+                  name="register_form"
                   onSubmit={(event) => {
                       event.preventDefault();
-                      const form = document.forms["auth_form"]
+                      const form = document.forms["register_form"]
                       setData({
                           status: "info",
                           text: "Ожидание ответа сервера"
                       })
                       setOpen(true)
-                      axios.post("/api/login", {
+                      axios.post("/api/register", {
                           username: form.username.value,
                           password: form.password.value,
                       })
                           .then((response) => {
+                              setOpen(false)
                               if (response.data.status) {
                                   setData({
                                       status: "success",
-                                      text: "Успешно"
+                                      text: "успешно"
+                                  })
+                              } else {
+                                  setData({
+                                      status: "error",
+                                      text: "Данный логин уже занят"
                                   })
                               }
-                              setRefresh(!refresh)
+                              setOpen(true)
                           })
-                          .catch((response) => {
-                              setData({
-                                  status: "error",
-                                  text: "Неверный логин или пароль"
-                              })
-                          })
-
                   }}
             >
                 <FormControl>
@@ -56,13 +54,8 @@ function Auth({setRefresh, refresh}) {
                     <OutlinedInput required={true} type="password" label="Пароль" id="password" name="password"/>
                 </FormControl>
                 <FormControl>
-                    <OutlinedInput value="Войти" type="submit"/>
+                    <OutlinedInput value="Зарегистрироваться" type="submit"/>
                 </FormControl>
-                <NavLink
-                    to="/register"
-                    className={classnames(styles.link)}>
-                    Зарегистрироваться
-                </NavLink>
             </form>
             <Snackbar
                 open={open}
@@ -79,4 +72,4 @@ function Auth({setRefresh, refresh}) {
     );
 }
 
-export default Auth;
+export default Register;
