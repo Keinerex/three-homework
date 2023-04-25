@@ -13,8 +13,6 @@ import Books from "./components/Books/Books";
 import CartPage from "./pages/CartPage/CartPage";
 import ProfilePage from "./pages/UserPage/ProfilePage";
 import PersonalData from "./components/PersonalData/PersonalData";
-import Bonuses from "./components/Bonuses/Bonuses";
-import Favourite from "./components/Favourite/Favourite";
 import Orders from "./components/Orders/Orders";
 import {LocalizationProvider} from "@mui/x-date-pickers";
 import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
@@ -41,8 +39,6 @@ function App() {
                                 <Route path="/profile" element={<ProfilePage/>}>
                                     <Route path="personal" element={<PersonalData/>}/>
                                     <Route path="orders" element={<Orders/>}/>
-                                    <Route path="bonus" element={<Bonuses/>}/>
-                                    <Route path="favourite" element={<Favourite></Favourite>}/>
                                 </Route>
                                 <Route path="/register" element={<Register/>}/>
                             </Routes>

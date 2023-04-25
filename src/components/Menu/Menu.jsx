@@ -20,24 +20,6 @@ function Menu() {
                 )}>
                 Личные данные
             </NavLink>
-            <NavLink
-                to="/profile/bonus"
-                key="bonus"
-                className={({isActive}) => classnames(
-                    {[styles.active]: isActive},
-                    styles.select_link
-                )}>
-                Бонусы и скидки
-            </NavLink>
-            <NavLink
-                to="/profile/favourite"
-                key="favourite"
-                className={({isActive}) => classnames(
-                    {[styles.active]: isActive},
-                    styles.select_link
-                )}>
-                Отложенное
-            </NavLink>
             <a
                 onClick={(event) => {
                     event.preventDefault();
